@@ -17,7 +17,7 @@ class PolymarketWebSocketClient:
         self.settings = settings
         self.ws_url = settings.polymarket_ws_url
         self.websocket: websockets.WebSocketServerProtocol | None = None
-        # NOTE: Handlers should be async functions to avoid blocking the event loop.
+        # Mapping of message types (e.g., 'book') to async callback functions.
         self.message_handlers: dict[str, Callable[[dict[str, Any]], Awaitable[None]]] = {}
         self.running = False
 
@@ -26,4 +26,3 @@ class PolymarketWebSocketClient:
 
     async def connect(self):
         try:
-            self.websocket
