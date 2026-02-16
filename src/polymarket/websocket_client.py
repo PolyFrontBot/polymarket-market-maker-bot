@@ -21,8 +21,5 @@ class PolymarketWebSocketClient:
         self.message_handlers: dict[str, Callable[[dict[str, Any]], Awaitable[None]]] = {}
         self.running = False
 
-    def register_handler(self, message_type: str, handler: Callable):
-        self.message_handlers[message_type] = handler
-
-    async def connect(self):
-        try:
+    def register_handler(self, message_type: str, handler: Callable[[dict[str, Any]], Awaitable[None]]) -> None:
+        """Registers an async callback handler for
