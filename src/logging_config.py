@@ -14,6 +14,8 @@ def configure_logging(level: Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITI
     ensuring that all logs are output in a consistent JSON format suitable
     for production environments and log aggregation services.
     """
+    # NOTE: We set the stdlib logging format to the raw message string because
+    # the final formatting is handled by the structlog processors below.
     logging.basicConfig(
         format="%(message)s",
         stream=sys.stdout,
@@ -22,8 +24,4 @@ def configure_logging(level: Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITI
 
     structlog.configure(
         processors=[
-            structlog.processors.TimeStamper(fmt="iso"),
-            structlog.stdlib.add_logger_name,
-            structlog.stdlib.add_log_level,
-            structlog.processors.StackInfoRenderer(),
-            structlog.process
+            structlog.processors.TimeStamper(fmt="iso
