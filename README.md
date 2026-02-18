@@ -376,3 +376,4 @@ Ensure compliance with local regulations and Polymarket terms of service before 
 - Review Polymarket's terms of service and ensure compliance with automated trading policies.
 - Maintain audit logs and monitor all operations for compliance purposes.
 
+Test for graph
